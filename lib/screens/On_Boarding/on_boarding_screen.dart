@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:rice_harbor/screens/Home_Screen/Home_screen.dart';
 import 'package:rice_harbor/screens/On_Boarding/Intro_Screens/intro_screen1.dart';
 import 'package:rice_harbor/screens/On_Boarding/Intro_Screens/intro_screen2.dart';
 import 'package:rice_harbor/screens/On_Boarding/Intro_Screens/intro_screen3.dart';
@@ -19,6 +22,8 @@ class On_Boarding_Screen extends StatefulWidget {
 class _On_Boarding_ScreenState extends State<On_Boarding_Screen> {
   // Controller of Page Indicators........
   final PageController _controller = PageController();
+
+  bool onLastPage = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +32,11 @@ class _On_Boarding_ScreenState extends State<On_Boarding_Screen> {
         PageView(
           physics: const ClampingScrollPhysics(),
           controller: _controller,
+          onPageChanged: (index) {
+            setState(() {
+              onLastPage = (index == 4);
+            });
+          },
           children: const [
             Intro_Screen1(),
             Intro_Screen2(),
@@ -35,72 +45,68 @@ class _On_Boarding_ScreenState extends State<On_Boarding_Screen> {
             Intro_Screen5(),
           ],
         ),
-        Container(
-            alignment: const Alignment(0, 0.84),
-            child: SmoothPageIndicator(
-              controller: _controller,
-              count: 5,
-              effect: ExpandingDotsEffect(
-                activeDotColor: Colors.white,
-                dotColor: Colors.black.withOpacity(0.7),
-                dotHeight: 14,
-                dotWidth: 14,
-              ),
-            )),
-
-        // Forward Arrow...........
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 703, left: 300),
-            child: TouchableOpacity(
-              activeOpacity: 0.3,
-              child: GestureDetector(
-                onTap: () {
+        Padding(
+          padding: const EdgeInsets.only(right: 165),
+          child: Container(
+              alignment: const Alignment(0, 0.84),
+              child: SmoothPageIndicator(
+                controller: _controller,
+                count: 5,
+                effect: ExpandingDotsEffect(
+                  activeDotColor: Colors.white,
+                  dotColor: Colors.black.withOpacity(0.7),
+                  dotHeight: 12,
+                  dotWidth: 12,
+                ),
+              )),
+        ),
+        onLastPage
+            ? GestureDetector(
+                onTap: () => {
                   _controller.nextPage(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeIn);
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.easeIn),
                 },
-                child: Container(
-                  height: 25,
-                  width: 25,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/forward_arrow.png'),
-                      fit: BoxFit.contain,
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => Home_Screen(),
+                        transition: Transition.circularReveal,
+                        duration: Duration(seconds: 2));
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 703, left: 235),
+                      child: Image.asset(
+                        'assets/images/Start.png',
+                        height: 40,
+                        width: 105,
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            : TouchableOpacity(
+                activeOpacity: 0.3,
+                child: GestureDetector(
+                  onTap: () => {
+                    _controller.nextPage(
+                        duration: Duration(milliseconds: 500),
+                        curve: Curves.easeIn),
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 697, left: 292),
+                      child: Image.asset(
+                        'assets/images/forward_arrow1.png',
+                        height: 50,
+                        width: 50,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ),
-        ),
-
-// Back Arrow................
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 703, right: 300),
-            child: TouchableOpacity(
-              activeOpacity: 0.3,
-              child: GestureDetector(
-                onTap: () {
-                  _controller.previousPage(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeIn);
-                },
-                child: Container(
-                  height: 25,
-                  width: 25,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/back_arrow.png'),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
       ],
     ));
   }
