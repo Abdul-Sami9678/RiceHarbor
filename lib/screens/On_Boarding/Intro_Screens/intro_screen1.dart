@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import 'package:rice_harbor/screens/On_Boarding/Intro_Screens/intro_screen2.dart';
-import 'package:touchable_opacity/touchable_opacity.dart';
 
 class Intro_Screen1 extends StatefulWidget {
   const Intro_Screen1({super.key});

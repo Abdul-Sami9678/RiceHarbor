@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:rice_harbor/screens/On_Boarding/Intro_Screens/intro_screen1.dart';
-import 'package:rice_harbor/screens/On_Boarding/Intro_Screens/intro_screen3.dart';
-import 'package:touchable_opacity/touchable_opacity.dart';
 
 class Intro_Screen2 extends StatelessWidget {
   const Intro_Screen2({super.key});

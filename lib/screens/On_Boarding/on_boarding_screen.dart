@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:rice_harbor/screens/Home_Screen/Home_screen.dart';
+import 'package:rice_harbor/screens/Login_Signup/login.dart';
 import 'package:rice_harbor/screens/On_Boarding/Intro_Screens/intro_screen1.dart';
 import 'package:rice_harbor/screens/On_Boarding/Intro_Screens/intro_screen2.dart';
 import 'package:rice_harbor/screens/On_Boarding/Intro_Screens/intro_screen3.dart';
@@ -69,9 +70,9 @@ class _On_Boarding_ScreenState extends State<On_Boarding_Screen> {
                 },
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(() => Home_Screen(),
-                        transition: Transition.circularReveal,
-                        duration: Duration(seconds: 2));
+                    Get.to(() => Login(),
+                        transition: Transition.downToUp,
+                        duration: Duration(milliseconds: 700));
                   },
                   child: Container(
                     alignment: Alignment.center,
