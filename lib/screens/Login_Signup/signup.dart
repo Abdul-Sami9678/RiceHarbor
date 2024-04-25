@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rice_harbor/screens/Login_Signup/Log.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 
 class Create_Account extends StatefulWidget {
@@ -19,7 +20,7 @@ class _Create_AccountState extends State<Create_Account> {
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(color: Color(0xFFF0FAFA)),
+            decoration: BoxDecoration(color: Colors.white60),
           ),
           SafeArea(
             child: Padding(
@@ -55,11 +56,14 @@ class _Create_AccountState extends State<Create_Account> {
                     ),
                     TextField(
                       decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 212, 209, 209)),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                           focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0XFFD9D9D9)),
                               borderRadius: BorderRadius.circular(12)),
                           border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0XFFD3D3D3)),
                               borderRadius: BorderRadius.circular(12)),
                           labelText: 'Enter your full name',
                           contentPadding: EdgeInsets.symmetric(
@@ -83,11 +87,14 @@ class _Create_AccountState extends State<Create_Account> {
                     ),
                     TextField(
                       decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 212, 209, 209)),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                           focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0XFFD9D9D9)),
                               borderRadius: BorderRadius.circular(12)),
                           border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0XFFD3D3D3)),
                               borderRadius: BorderRadius.circular(12)),
                           labelText: 'Enter your email address',
                           contentPadding: EdgeInsets.symmetric(
@@ -122,12 +129,14 @@ class _Create_AccountState extends State<Create_Account> {
                                 ? Icon(Icons.visibility)
                                 : Icon(Icons.visibility_off),
                           ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 212, 209, 209)),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                           focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0XFFD9D9D9)),
                               borderRadius: BorderRadius.circular(12)),
                           border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Color.fromARGB(255, 195, 173, 173)),
                               borderRadius: BorderRadius.circular(12)),
                           labelText: 'Enter your password',
                           contentPadding: EdgeInsets.symmetric(
@@ -329,13 +338,21 @@ class _Create_AccountState extends State<Create_Account> {
                         ),
                         TouchableOpacity(
                           activeOpacity: 0.3,
-                          child: const Text(
-                            'Log In',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: ('Sans-Regular'),
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) => Login_Screen())));
+                            },
+                            child: const Text(
+                              'Log In',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: ('Sans-Regular'),
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline),
+                            ),
                           ),
                         ),
                       ],
