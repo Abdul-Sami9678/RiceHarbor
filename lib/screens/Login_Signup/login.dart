@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:rice_harbor/screens/Auth_Page/Authorization.dart';
+import 'package:rice_harbor/screens/Home_Screen/Home_screen.dart';
 import 'package:rice_harbor/screens/Login_Signup/Log.dart';
 import 'package:rice_harbor/screens/Login_Signup/signup.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
@@ -105,20 +107,28 @@ class _LoginState extends State<Login> {
             ),
           ),
         ),
-        TouchableOpacity(
-          activeOpacity: 0.3,
-          child: Container(
-            alignment: Alignment.center,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 672),
-              child: Image.asset(
-                'assets/images/Continue.png',
-                height: 24,
-                width: 130,
-              ),
-            ),
-          ),
-        ),
+        // TouchableOpacity(
+        //   activeOpacity: 0.3,
+        //   child: GestureDetector(
+        //     onTap: () {
+        //       Get.to(() => Home_Screen(),
+        //           transition: Transition.upToDown,
+        //           duration: Duration(milliseconds: 500));
+        //     },
+        //     child: Container
+        //     (
+        //       alignment: Alignment.center,
+        //       child: Padding(
+        //         padding: const EdgeInsets.only(top: 672),
+        //         child: Image.asset(
+        //           'assets/images/Continue.png',
+        //           height: 24,
+        //           width: 130,
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

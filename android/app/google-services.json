@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "491560464071",
+    "project_id": "riceharbor-5c1ef",
+    "storage_bucket": "riceharbor-5c1ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491560464071:android:74beec947a19a6a629d8e2",
+        "android_client_info": {
+          "package_name": "com.example.rice_harbor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbrtZ7VXBQEesi6_exZAZLAx71Wv2PtW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

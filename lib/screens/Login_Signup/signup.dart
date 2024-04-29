@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:rice_harbor/screens/Login_Signup/Log.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 
@@ -11,6 +13,24 @@ class Create_Account extends StatefulWidget {
 }
 
 class _Create_AccountState extends State<Create_Account> {
+  void showAlert() {
+    QuickAlert.show(
+      barrierDismissible: true,
+      context: context,
+      type: QuickAlertType.success,
+      backgroundColor: Colors.white60,
+      confirmBtnText: "Login",
+      title: "Successfully Created!",
+      titleColor: Colors.black,
+      onConfirmBtnTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Login_Screen()));
+      },
+      confirmBtnColor: Colors.black,
+      text: "Use your Email to login to your account",
+    );
+  }
+
   bool _isVisible = false;
   @override
   Widget build(BuildContext context) {
@@ -204,12 +224,17 @@ class _Create_AccountState extends State<Create_Account> {
                             borderRadius: BorderRadius.circular(12)),
                         child: TouchableOpacity(
                           activeOpacity: 0.3,
-                          child: const Text(
-                            'Create an Account',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.5,
-                              fontFamily: ('Sans'),
+                          child: GestureDetector(
+                            onTap: () {
+                              showAlert();
+                            },
+                            child: const Text(
+                              'Create an Account',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.5,
+                                fontFamily: ('Sans'),
+                              ),
                             ),
                           ),
                         )),
