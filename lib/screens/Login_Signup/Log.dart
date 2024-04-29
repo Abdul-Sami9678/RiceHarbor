@@ -1,14 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:liquid_swipe/Helpers/Helpers.dart';
 import 'package:rice_harbor/screens/Forget_Password/Forget.dart';
+import 'package:rice_harbor/screens/Home_Screen/Home_screen.dart';
 import 'package:rice_harbor/screens/Login_Signup/signup.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 
 class Login_Screen extends StatefulWidget {
-  const Login_Screen({super.key});
+  Login_Screen({super.key});
 
   @override
   State<Login_Screen> createState() => _Login_ScreenState();
@@ -16,6 +19,25 @@ class Login_Screen extends StatefulWidget {
 
 class _Login_ScreenState extends State<Login_Screen> {
   bool _isVisible = false;
+
+  final _formField = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwwordController = TextEditingController();
+
+//Sign In-User Method...........
+  void signUserIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailController.text,
+      password: passwwordController.text,
+    );
+  }
+
+  void dispose() {
+    emailController.dispose();
+    passwwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +46,7 @@ class _Login_ScreenState extends State<Login_Screen> {
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(color: Colors.white60),
+            decoration: BoxDecoration(color: Color(0XFFFFFFFF)),
           ),
           SingleChildScrollView(
             child: SafeArea(
@@ -59,6 +81,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                       height: 10,
                     ),
                     TextField(
+                      controller: emailController,
                       decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -90,6 +113,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                       height: 10,
                     ),
                     TextField(
+                      controller: passwwordController,
                       obscureText: !_isVisible,
                       decoration: InputDecoration(
                           suffixIcon: IconButton(
@@ -164,12 +188,20 @@ class _Login_ScreenState extends State<Login_Screen> {
                             borderRadius: BorderRadius.circular(12)),
                         child: TouchableOpacity(
                           activeOpacity: 0.3,
-                          child: const Text(
-                            'Login',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.5,
-                              fontFamily: ('Sans'),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Home_Screen()));
+                            },
+                            child: const Text(
+                              'Login',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.5,
+                                fontFamily: ('Sans'),
+                              ),
                             ),
                           ),
                         )),
