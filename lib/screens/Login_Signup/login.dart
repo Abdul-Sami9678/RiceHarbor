@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:rice_harbor/screens/Auth_Page/Authorization.dart';
 import 'package:rice_harbor/screens/Home_Screen/Home_screen.dart';
 import 'package:rice_harbor/screens/Login_Signup/Log.dart';
 import 'package:rice_harbor/screens/Login_Signup/signup.dart';
@@ -90,9 +89,10 @@ class _LoginState extends State<Login> {
           activeOpacity: 0.3,
           child: GestureDetector(
             onTap: () {
-              Get.to(() => Login_Screen(),
-                  transition: Transition.upToDown,
-                  duration: Duration(milliseconds: 500));
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: ((context) => Login_Screen())),
+              );
             },
             child: Container(
               alignment: Alignment.center,

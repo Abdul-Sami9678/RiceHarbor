@@ -57,7 +57,7 @@ class _Reset_PasswordState extends State<Reset_Password> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.back();
+                        Navigator.of(context).pop();
                       },
                       child: Container(
                         height: 35,
