@@ -18,7 +18,7 @@ class _Intro_Screen1State extends State<Intro_Screen1> {
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/market.png'),
+            image: AssetImage('assets/images/market1.png'),
             fit: BoxFit.cover,
           ),
         ),

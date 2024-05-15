@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:sizer/sizer.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 
 class Notification_Messages extends StatefulWidget {

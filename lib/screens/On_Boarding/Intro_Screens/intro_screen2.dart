@@ -11,7 +11,7 @@ class Intro_Screen2 extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/trends.png'),
+            image: AssetImage('assets/images/trends1.png'),
             fit: BoxFit.cover,
           ),
         ),

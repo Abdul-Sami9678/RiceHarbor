@@ -6,6 +6,8 @@ import 'package:rice_harbor/screens/Tabs_Options/Cart.dart';
 import 'package:rice_harbor/screens/Tabs_Options/Home.dart';
 import 'package:rice_harbor/screens/Tabs_Options/Saved.dart';
 import 'package:rice_harbor/screens/Tabs_Options/Search.dart';
+import 'package:rice_harbor/screens/Tabs_Options/Trends.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class Home_Screen extends StatefulWidget {
   const Home_Screen({super.key});
@@ -16,11 +18,16 @@ class Home_Screen extends StatefulWidget {
 
 class _Home_ScreenState extends State<Home_Screen> {
   int myIndex = 0;
+  void _navigatebottomnavbar(int index) {
+    setState(() {
+      myIndex = index;
+    });
+  }
+
   List<Widget> pageList = <Widget>[
     const Main_Home(),
-    const Search(),
     const Saved(),
-    const Cart(),
+    const CartScreen(),
     const Account(),
   ];
   Future<void> _handletoRefresh() async {
@@ -29,70 +36,50 @@ class _Home_ScreenState extends State<Home_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoTabScaffold(
-        tabBar: CupertinoTabBar(
-            activeColor: Colors.black,
-            inactiveColor: Colors.grey,
-            currentIndex: myIndex,
-            backgroundColor: Colors.white60,
-            height: 60,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                label: 'Home',
-                icon: ImageIcon(AssetImage('assets/images/icons/Home.png')),
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(
-                    AssetImage('assets/images/icons/Search_Icon.png')),
-                label: 'Search',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/images/icons/Saved.png')),
-                label: 'Saved',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/images/icons/Cart.png')),
-                label: 'Cart',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/images/icons/Account.png')),
-                label: 'Account',
-              ),
-            ]),
-        tabBuilder: ((context, index) {
-          switch (index) {
-            case 0:
-              return CupertinoTabView(
-                builder: (context) {
-                  return CupertinoPageScaffold(child: Main_Home());
-                },
-              );
-            case 1:
-              return CupertinoTabView(
-                builder: (context) {
-                  return CupertinoPageScaffold(child: Search());
-                },
-              );
-            case 2:
-              return CupertinoTabView(
-                builder: (context) {
-                  return CupertinoPageScaffold(child: Saved());
-                },
-              );
-            case 3:
-              return CupertinoTabView(
-                builder: (context) {
-                  return CupertinoPageScaffold(child: Cart());
-                },
-              );
-            case 4:
-              return CupertinoTabView(
-                builder: (context) {
-                  return CupertinoPageScaffold(child: Account());
-                },
-              );
-          }
-          return Container();
-        }));
+    return Scaffold(
+      body: pageList[myIndex],
+      backgroundColor: Color(0XFFFFFFFF),
+      extendBodyBehindAppBar: true,
+      bottomNavigationBar: SizedBox(
+        height: 60,
+        child: Material(
+          elevation: 0,
+          child: BottomNavigationBar(
+              backgroundColor: Color(0XFFFFFFFF),
+              unselectedItemColor: Color.fromARGB(223, 136, 134, 134),
+              currentIndex: myIndex,
+              onTap: _navigatebottomnavbar,
+              selectedItemColor: const Color.fromARGB(
+                  255, 10, 10, 10), // Text color when selected
+              elevation: 8,
+              selectedFontSize: 13, // Text size when selected
+              unselectedFontSize: 13, // Text size when unselected
+              type: BottomNavigationBarType.fixed,
+              items: [
+                BottomNavigationBarItem(
+                  label: 'Home',
+                  icon: ImageIcon(AssetImage('assets/images/icons/Home.png')),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Trends',
+                  icon: ImageIcon(AssetImage('assets/images/icons/Home.png')),
+                ),
+                BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage('assets/images/icons/Saved.png')),
+                  label: 'Saved',
+                ),
+                BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage('assets/images/icons/Cart.png')),
+                  label: 'Cart',
+                ),
+                BottomNavigationBarItem(
+                  icon:
+                      ImageIcon(AssetImage('assets/images/icons/Account.png')),
+                  label: 'Account',
+                ),
+              ]),
+        ),
+      ),
+    );
   }
 }
