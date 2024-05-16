@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
+import 'package:sizer/sizer.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 
 class Search_Bar extends StatefulWidget {
@@ -18,8 +19,10 @@ class _Search_BarState extends State<Search_Bar> {
     return Row(
       children: [
         Container(
-          height: 52,
-          width: 281,
+          height: MediaQuery.of(context).size.height *
+              0.065, // 10% of screen height
+          width:
+              MediaQuery.of(context).size.width * 0.662, // 80% of screen width
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12.0),
@@ -103,8 +106,8 @@ class _Search_BarState extends State<Search_Bar> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                height: 24,
-                                width: 70,
+                                height: 26,
+                                width: MediaQuery.of(context).size.width * 0.65,
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(

@@ -61,7 +61,7 @@ class _ImageSliderState extends State<ImageSlider> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: PageView(
-              //controller: _pageController,
+              controller: _pageController,
               scrollDirection: Axis.horizontal,
               allowImplicitScrolling: true,
               onPageChanged: (index) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rice_harbor/Provider/cart_provider.dart';
 import 'package:rice_harbor/screens/Home_Screen/Home_screen.dart';
+import 'package:rice_harbor/screens/Tabs_Options/Cart/checkout.dart';
 import '../../constants.dart';
 
 class CartScreen extends StatefulWidget {
@@ -33,6 +34,7 @@ class _CartScreenState extends State<CartScreen> {
     }
 
     return Scaffold(
+      bottomSheet: CheckOutBox(),
       // for total and check out
       backgroundColor: Color(0xFFFFFFFF),
       //bottomSheet:  CheckOutBox(),

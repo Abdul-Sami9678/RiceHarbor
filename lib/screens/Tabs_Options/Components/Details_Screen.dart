@@ -32,7 +32,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
         child: Column(
           children: [
             //APPBAR-Buttons.........
-            DetailAppBar(),
+            DetailAppBar(
+              product: widget.product,
+            ),
             //Detail Image Screen..........
             MyImageSlider(
                 image: widget.product.image,

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 import 'package:rice_harbor/Data/Data.dart';
+import 'package:rice_harbor/Provider/favorite_provider.dart';
 import 'package:rice_harbor/constants.dart';
 import 'package:rice_harbor/screens/Tabs_Options/Components/Details_Screen.dart';
 
@@ -11,6 +13,7 @@ class ProductCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = FavoriteProvider.of(context);
     return GestureDetector(
         onTap: () {
           Navigator.push(
@@ -73,6 +76,8 @@ class ProductCart extends StatelessWidget {
               ],
             ),
           ),
+
+          //For Favortie Icon.......................
           Positioned(
               child: Align(
             alignment: Alignment.topRight,
@@ -86,9 +91,13 @@ class ProductCart extends StatelessWidget {
                     bottomLeft: Radius.circular(10),
                   )),
               child: GestureDetector(
-                onTap: () {},
-                child: const Icon(
-                  Icons.favorite_border,
+                onTap: () {
+                  provider.toggleFavorite(product);
+                },
+                child: Icon(
+                  provider.isExist(product)
+                      ? Icons.favorite
+                      : Icons.favorite_border,
                   color: Colors.white,
                   size: 19,
                 ),

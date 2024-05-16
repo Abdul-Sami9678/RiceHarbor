@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rice_harbor/Provider/cart_provider.dart';
+import 'package:rice_harbor/Provider/favorite_provider.dart';
 import 'package:rice_harbor/screens/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:rice_harbor/Firebase/firebase_options.dart';
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
           providers: [
             ChangeNotifierProvider(
               create: (_) => CartProvider(),
+            ),
+            ChangeNotifierProvider(
+              create: (_) => FavoriteProvider(),
             )
           ],
           child: GetMaterialApp(
