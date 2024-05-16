@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rice_harbor/Data/Data.dart';
+import 'package:rice_harbor/Provider/favorite_provider.dart';
 
 class DetailAppBar extends StatelessWidget {
-  const DetailAppBar({super.key});
+  final Product product;
+  const DetailAppBar({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
+    final provider = FavoriteProvider.of(context);
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Row(
@@ -25,11 +29,15 @@ class DetailAppBar extends StatelessWidget {
           IconButton(
             style: IconButton.styleFrom(
               backgroundColor: Color(0XFFF5F5F5),
-              padding: const EdgeInsets.all(15),
+              padding: EdgeInsets.all(15),
             ),
-            onPressed: () {},
+            onPressed: () {
+              provider.toggleFavorite(product);
+            },
             icon: Icon(
-              Icons.favorite,
+              provider.isExist(product)
+                  ? Icons.favorite
+                  : Icons.favorite_border,
               color: Colors.black,
               size: 25,
             ),
